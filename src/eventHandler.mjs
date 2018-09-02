@@ -1,6 +1,6 @@
 export class EventHandler {
 
-  constructor (shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack) {
+  constructor (shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack, hitRegionErrorHander) {
     this.shapeManager = shapeManager;
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
@@ -9,16 +9,23 @@ export class EventHandler {
     this.isDragging = false;
     this.shapeSelectedCallBack = shapeSelectedCallBack;
     this.shapeUnSelectedCallBack = shapeUnSelectedCallBack;
+    this.hitRegionErrorHander = hitRegionErrorHander;
 
     // Set some defaults.
     this.ctx.fillStyle = "#ffff00";
     this.ctx.strokeStyle = "#000000";
     this.ctx.lineWidth = 5;
 
+
   }
   
   init() {
-    this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    // Firstly, check if addHitRegion is enabled.
+    if ( typeof this.ctx.addHitRegion != "function") { 
+        this.hitRegionErrorHander();
+    } else {
+        this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    }
   }
 
   onMouseMove(event) {
