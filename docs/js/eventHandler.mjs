@@ -1,24 +1,31 @@
 export class EventHandler {
 
-  constructor (shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack) {
-  	this.shapeManager = shapeManager;
-  	this.canvas = canvas;
-  	this.ctx = canvas.getContext('2d');
+  constructor (shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack, hitRegionErrorHander) {
+    this.shapeManager = shapeManager;
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
     this.shapeId = null;
     this.isOverShape = false;
     this.isDragging = false;
     this.shapeSelectedCallBack = shapeSelectedCallBack;
     this.shapeUnSelectedCallBack = shapeUnSelectedCallBack;
+    this.hitRegionErrorHander = hitRegionErrorHander;
 
     // Set some defaults.
     this.ctx.fillStyle = "#ffff00";
     this.ctx.strokeStyle = "#000000";
     this.ctx.lineWidth = 5;
 
+
   }
   
   init() {
-    this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    // Firstly, check if addHitRegion is enabled.
+    if ( typeof this.ctx.addHitRegion != "function") { 
+        this.hitRegionErrorHander();
+    } else {
+        this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    }
   }
 
   onMouseMove(event) {
@@ -41,35 +48,34 @@ export class EventHandler {
   }
 
   onMouseDown(event) {
-      if(event.region) {
-        this.isDragging = true;
-        this.shapeId = event.region;
-        this.shapeManager.selectShape(this.shapeId, this.ctx);
-        this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
-      } else if (this.shapeId) {
-        this.shapeId = null;
-        this.shapeManager.selectShape(this.shapeId, this.ctx);
-        this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
-      }
+    if(event.region) {
+      this.isDragging = true;
+      this.shapeId = event.region;
+      this.shapeManager.selectShape(this.shapeId, this.ctx);
+      this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    } else if (this.shapeId) {
+      this.shapeId = null;
+      this.shapeManager.selectShape(this.shapeId, this.ctx);
+      this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    }
   }
 
   onMouseUp(event) {
-      if (this.isDragging) {
-        this.shapeManager.getItem(this.shapeId).mouseOver(this.ctx);
-        this.shapeManager.persistLocations();
-      }
-      this.isDragging = false;
-      if (event.region === this.shapeId) {
-        this.shapeManager.selectShape(this.shapeId, this.ctx);
-        
-      } 
-      this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
-      if (this.shapeId) {
-        let shape = this.shapeManager.getSelected();
-        this.shapeSelectedCallBack(shape.size, shape.rotation);
-      } else {
-        this.shapeUnSelectedCallBack();
-      }
+    if (this.isDragging) {
+      this.shapeManager.getItem(this.shapeId).mouseOver(this.ctx);
+      this.shapeManager.persistLocations();
+    }
+    this.isDragging = false;
+    if (event.region === this.shapeId) {
+      this.shapeManager.selectShape(this.shapeId, this.ctx);
+    } 
+    this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
+    if (this.shapeId) {
+      let shape = this.shapeManager.getSelected();
+      this.shapeSelectedCallBack(shape.size, shape.rotation);
+    } else {
+      this.shapeUnSelectedCallBack();
+    }
   }
 
   rotateShape(degrees) {

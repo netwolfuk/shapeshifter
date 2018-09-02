@@ -47,8 +47,8 @@ const load = () => {
           // callback to show error message when ES feature "canvas.context.addHitRegion" is not enabled.
           function(){ 
               errorPanel.style.visibility = "visible";
-              console.error("canvas.context.addHitRegion is not enabled. " 
-                  + "Please see readme.")
+              console.error("canvas.context.addHitRegion is not enabled. " +
+                              "Please see readme.");
           }
         );
 
