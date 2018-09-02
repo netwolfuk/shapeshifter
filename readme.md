@@ -11,7 +11,7 @@ More information about hit regions, and minimum browser requirements is availabl
 
 #### Running the app
 - Navigate to https://netwolfuk.github.io/shapeshifter/
-- You should see four shapes loaded. One each of Triagle, Circle, Square and Star. They will be randomly placed within the browser window.
+- You should see four shapes loaded. One each of Triangle, Circle, Square and Star. They will be randomly placed within the browser window.
 - Click a shape name in the "Create" box to create new shapes.
 - Click and drag to move them.
 - Click and change their size and rotation on the pop-up panel.
@@ -27,12 +27,12 @@ There are two types of tests on this page.
 
 ## Architecture
 The app is divided into four main classes:
- **Shape** (`src/shapes.mjs`) is a generic class which represents a shape. A shape's position, rotation and size are stored within a shape instance, and a shape knows how to draw itself when passed a `context`. The four shapes (Triangle, Circle, Square and Star) are sub-classes of `Shape` and are only required to implement one method called `drawPath(ctx)`. The following is the *Cirlce.drawPath* method.
+ **Shape** ([`src/shapes.mjs`](src/shapes.mjs)) is a generic class which represents a shape. A shape's position, rotation and size are stored within a shape instance, and a shape knows how to draw itself when passed a `context`. The four shapes (Triangle, Circle, Square and Star) are sub-classes of `Shape` and are only required to implement one method called `drawPath(ctx)`. The following is the *Cirlce.drawPath* method.
  
  ```
- 	drawPath(ctx) {
-      	ctx.arc(0, 0, this.size/2, 0, 2 * Math.PI, false);
-	}
+    drawPath(ctx) {
+        ctx.arc(0, 0, this.size/2, 0, 2 * Math.PI, false);
+    }
  ``` 
 
 **ShapeManager** (`src/shapeManager.mjs`) is responsible managing and storing shape instances. It loads any shapes in HTML5 localStorage on page load. It creates new shape instances, deletes existing ones and manages the size, rotation and location of shape instances. When an update occurs, it asks each shape to redraw itself.
