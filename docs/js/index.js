@@ -16,6 +16,13 @@ const load = () => {
   let scaleValue = document.getElementById("scaleValue");
   let scaleInput = document.getElementById("scaleInput");
 
+  // Firstly, check if addHitRegion is enabled.
+  // If not, show error, then return and don't go any further.
+  if ( typeof canvas.getContext('2d').addHitRegion != "function") { 
+      handleHitRegionError();
+      return;
+  }
+
   // Create the shapeManager, and pass in the SessionStorage, 
   // the shape ID generator, and andom point generator.
   let shapeManager = new ShapeManager(
@@ -42,13 +49,6 @@ const load = () => {
           // Callback to hide toolsPanel when shape is de-selected.
           function(){
               toolsPanel.style.visibility = "hidden";
-          },
-
-          // callback to show error message when ES feature "canvas.context.addHitRegion" is not enabled.
-          function(){ 
-              errorPanel.style.visibility = "visible";
-              console.error("canvas.context.addHitRegion is not enabled. " +
-                              "Please see readme.");
           }
         );
 
@@ -92,3 +92,10 @@ const load = () => {
 };
 
 window.onload = load; 
+
+// callback to show error message when ES feature "canvas.context.addHitRegion" is not enabled.
+function handleHitRegionError(){ 
+    errorPanel.style.visibility = "visible";
+    console.error("canvas.context.addHitRegion is not enabled. " +
+                    "Please see readme.");
+}

@@ -20,12 +20,7 @@ export class EventHandler {
   }
   
   init() {
-    // Firstly, check if addHitRegion is enabled.
-    if ( typeof this.ctx.addHitRegion != "function") { 
-        this.hitRegionErrorHander();
-    } else {
-        this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
-    }
+    this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
   }
 
   onMouseMove(event) {

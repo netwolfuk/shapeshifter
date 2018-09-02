@@ -18,7 +18,11 @@ describe('EventHandler move (mouse event) tests', function () {
   let shapeUnSelectedCallBack = sinon.fake();
 
   // Create an instance of EventHander, and pass in the fakes and spies.
-  let eventHandler = new EventHandler(shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack);  
+  let eventHandler = new EventHandler(shapeManager, 
+                                      canvas, 
+                                      shapeSelectedCallBack, 
+                                      shapeUnSelectedCallBack 
+                                    );
   eventHandler.init();
   
   // Run the tests. These tests assume they will be run in the order specified.
@@ -57,7 +61,11 @@ describe('EventHandler rotate,scale,delete,create tests', function () {
   let shapeUnSelectedCallBack = sinon.fake();
 
   // Create an instance of EventHander, and pass in the fakes and spies.
-  let eventHandler = new EventHandler(shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack);  
+    let eventHandler = new EventHandler(shapeManager, 
+                                      canvas, 
+                                      shapeSelectedCallBack, 
+                                      shapeUnSelectedCallBack
+                                    );
   eventHandler.init();
   
   // Run the tests. These tests assume they will be run in the order specified.
