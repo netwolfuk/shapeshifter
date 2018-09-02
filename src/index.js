@@ -24,7 +24,7 @@ const load = () => {
   }
 
   // Create the shapeManager, and pass in the SessionStorage, 
-  // the shape ID generator, and andom point generator.
+  // the shape ID generator, and random point generator.
   let shapeManager = new ShapeManager(
                             sessionStorage, 
                             RandomIdGenerator,
