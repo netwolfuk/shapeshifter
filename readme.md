@@ -7,7 +7,7 @@ Due to the features used in this app, namely `canvas.context.addHitRegion`, this
 - Chrome hit regions:  Go to `chrome://flags`, and enble **Experimental Web Platform features**
 - Firefox hit regions: Go to to `about:config`, enable **canvas.hitregions.enabled**
 
-More information about hit regions, and minimum browser requirements is available at: [CanvasRenderingContext2D.addHitRegion][https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/addHitRegion#Browser_compatibility].
+More information about hit regions, and minimum browser requirements is available at: [CanvasRenderingContext2D.addHitRegion](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/addHitRegion#Browser_compatibility).
 
 #### Running the app
 - Navigate to https://netwolfuk.github.io/shapeshifter/
