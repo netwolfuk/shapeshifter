@@ -22,8 +22,8 @@ More information about hit regions, and minimum browser requirements is availabl
 #### Running the Tests
 Navigate to [https://netwolfuk.github.io/shapeshifter/test.html](https://netwolfuk.github.io/shapeshifter/test.html)
 There are two types of tests on this page.
-  # Unit Tests: These are using mocha to do TDD style assertions on the code.
-  # Visual Tests: These are simple tests just rendering the Shape objects on the Canvas within a loop.  They do not do any assertions.  
+  - Unit Tests: These are using mocha to do TDD style assertions on the code.
+  - Visual Tests: These are simple tests just rendering the Shape objects on the Canvas within a loop.  They do not do any assertions.  
 
 ## Architecture
 The app is divided into four main classes:
