@@ -1,0 +1,82 @@
+body, html {
+  height: 100%;
+}
+
+body { 
+	background-color: #cccccc; 
+	font-family: Helvetica, Arial, sans-serif
+}
+
+
+#canvas {
+	background-color: #cccccc;
+	margin:0; padding:0; 
+    position:absolute; 
+    top:0; left:0
+}
+
+
+.slidecontainer, .shapescontainer {
+	z-index: 100;
+	position:relative;
+	background-color: #ffffff; 
+	border: solid 1px #000;
+	padding: 1em;
+
+}
+
+.slidecontainer {
+	visibility: hidden;
+	width: 25em; 
+}
+
+.shapescontainer {
+	float: right;
+	width: 5em;
+}
+
+.shapescontainer ul li {
+	padding: 0.25em;
+}
+
+.shapescontainer ul li:hover {
+	background-color: #ffff00;
+}
+
+span.newShape {
+	cursor: pointer;
+	font-family: "Arial", Gadget, sans-serif;
+	font-weight: bold;
+
+}
+
+.bar { width:20em; }
+
+#shapeTests {
+	font: 20px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 60px 50px;
+}
+
+#shapeTests h1 {
+    margin-top: 15px;
+    font-size: 1em;
+    font-weight: 200;
+}
+
+#shapeTests h2 {
+	font-size: 12px;
+    font-weight: normal;
+}
+
+#shapeTests ul {
+    list-style: none;
+}
+
+#shapeTests li , #shapeTests ul {
+	margin: 0;
+    padding: 0;
+}
+
+#shapeTests .suite {
+    margin-left: 15px;
+}

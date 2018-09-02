@@ -1,0 +1,30 @@
+{
+  "name": "shapeshifter",
+  "version": "1.0.0",
+  "description": "An ES2015 app for moving shapes around.",
+  "main": "index.js",
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Net Wolf <netwolfuk@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.16.3",
+    "grunt": "^1.0.3",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-qunit": "^3.0.1",
+    "grunt-contrib-uglify": "^3.4.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-run": "^0.8.1",
+    "jshint": "^2.9.6",
+    "nodemon": "^1.18.3"
+  },
+  "dependencies": {}
+}

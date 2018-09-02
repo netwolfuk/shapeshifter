@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/shapeshifter.css">
+
+    <script type="module" src='js/index.js'></script>
+</head>
+<body>
+    <canvas id="canvas" width=10 height=10></canvas>
+
+    <div id="toolsPanel" class="slidecontainer">
+        <table>
+            <tr><td> Rotatation: </td>
+            <td> <input class="bar" type="range" id="rotateInput" min="-180" max="180" value="0" step="3" /></td>
+            <td> <output id="rotateValue">0</output></td>
+            <tr><td> Scale: </td>
+            <td> <input class="bar" type="range" id="scaleInput" min="20" max="200" value="50" step="10" /></td>
+            <td> <output id="scaleValue">50</output></td>
+            </tr>
+            <tr><td> Delete: </td>
+            <td> <input class="bar" type="button" id="deleteInput" value="Delete Shape"/></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="newShapesPanel" class="shapescontainer">
+        <h5>Create</h5>
+        <hr>
+        <ul>
+            <li><span class='newShape' id='newTriangle'>Triangle</span></li>
+            <li><span class='newShape' id='newSquare'>Square</span></li>
+            <li><span class='newShape' id='newCircle'>Circle</span></li>
+            <li><span class='newShape' id='newStar'>Star</span></li>
+        </ul>
+    </div>
+
+</body>
+</html>
