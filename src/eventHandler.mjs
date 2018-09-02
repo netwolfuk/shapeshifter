@@ -1,9 +1,9 @@
 export class EventHandler {
 
   constructor (shapeManager, canvas, shapeSelectedCallBack, shapeUnSelectedCallBack) {
-  	this.shapeManager = shapeManager;
-  	this.canvas = canvas;
-  	this.ctx = canvas.getContext('2d');
+    this.shapeManager = shapeManager;
+    this.canvas = canvas;
+    this.ctx = canvas.getContext('2d');
     this.shapeId = null;
     this.isOverShape = false;
     this.isDragging = false;
@@ -61,7 +61,6 @@ export class EventHandler {
     this.isDragging = false;
     if (event.region === this.shapeId) {
       this.shapeManager.selectShape(this.shapeId, this.ctx);
-      
     } 
     this.shapeManager.redrawAll(this.canvas.width, this.canvas.height, this.ctx);
     if (this.shapeId) {
