@@ -51,15 +51,15 @@ Currently, ShapeShifter ignores browser resize events. The canvas size does not 
 ## Project Layout
 ```
  | 
- |- src/         <- Javascript files (.js) and modules (.mjs)
- |- test/        <- Javascript files containing tests and fakes.
- |- public/      <- html docs (index.html, test.html)
- |     - css/    <- CSS stylesheets  
- |- Gruntfile.js <- Config file for grunt build
- |- package.json <- packages for the grunt build
- |- nodemon.json <- Config file for running nodemon
- |- app.js       <- Express app to serve files during development
- |- reamdme.md   <- This file
+ |- src/                      <- Javascript files (.js) and modules (.mjs)
+ |- test/                     <- Javascript files containing tests and fakes.
+ |- public/                   <- html docs (index.html, test.html)
+ |     - css/                 <- CSS stylesheets  
+ |- Gruntfile.js              <- Config file for grunt build
+ |- package.json              <- packages for the grunt build
+ |- nodemon.json              <- Config file for running nodemon
+ |- app.js                    <- Express app to serve files during development
+ |- reamdme.md                <- This file
 ```
 
 #### Running the app locally
