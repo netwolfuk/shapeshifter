@@ -24,7 +24,7 @@ const load = () => {
   }
 
   // Create the shapeManager, and pass in the SessionStorage, 
-  // the shape ID generator, and andom point generator.
+  // the shape ID generator, and random point generator.
   let shapeManager = new ShapeManager(
                             sessionStorage, 
                             RandomIdGenerator,
@@ -52,46 +52,64 @@ const load = () => {
           }
         );
 
+  addCanvasEventHandlers(eventHandler);
+  addDomEventHandlers(eventHandler);
+
   eventHandler.init(); // request the initial draw to run.
 
+};
+
+window.onload = load; 
+
+
+// Bind the mouse events on the canvas to the eventHandler
+function addCanvasEventHandlers(eventHandler) {
   canvas.addEventListener('mousemove', function(event){ eventHandler.onMouseMove(event); });
   canvas.addEventListener('mousedown', function(event){ eventHandler.onMouseDown(event); });
   canvas.addEventListener('mouseup',   function(event){ eventHandler.onMouseUp(event);   });
+}
 
+// Bind the mouse events on the DOM to the eventHandler
+function addDomEventHandlers(eventHandler) {
+  // Handle changes to the rotation slider and pass them to the eventHandler
   rotateInput.addEventListener("input", function() {
           document.getElementById("rotateValue").textContent = rotateInput.value;
           eventHandler.rotateShape(rotateInput.value);
   }, false);
 
+  // Handle changes to the scale slider and pass them to the eventHandler
   scaleInput.addEventListener("input", function() {
           document.getElementById("scaleValue").textContent = scaleInput.value;
           eventHandler.scaleShape(scaleInput.value);
   }, false);
 
+  // Handle clicks of the delete button and pass them to the eventHandler
   deleteInput.addEventListener("click", function() {
           eventHandler.deleteShape();
           toolsPanel.style.visibility = "hidden";
   }, false);
 
+  // Handle clicks of the create panel "Triangle" button and pass them to the eventHandler
   newTriangle.addEventListener("click", function() {
           eventHandler.createShape("TRIANGLE");
   }, false);
 
+  // Handle clicks of the create panel "Square" button and pass them to the eventHandler
   newSquare.addEventListener("click", function() {
           eventHandler.createShape("SQUARE");
   }, false);
 
+  // Handle clicks of the create panel "Circle" button and pass them to the eventHandler
   newCircle.addEventListener("click", function() {
           eventHandler.createShape("CIRCLE");
   }, false);
 
+  // Handle clicks of the create panel "Star" button and pass them to the eventHandler
   newStar.addEventListener("click", function() {
           eventHandler.createShape("STAR");
-  }, false);
+  }, false);  
 
-};
-
-window.onload = load; 
+}
 
 // callback to show error message when ES feature "canvas.context.addHitRegion" is not enabled.
 function handleHitRegionError(){ 
@@ -99,3 +117,4 @@ function handleHitRegionError(){
     console.error("canvas.context.addHitRegion is not enabled. " +
                     "Please see readme.");
 }
+
